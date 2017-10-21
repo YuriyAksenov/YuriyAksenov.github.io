@@ -10,22 +10,17 @@ html, body{
 /* LAYOUT */
 body {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    flex-direction: column; 
+
 }
 
 main{
     display:  flex;
     flex-direction: column;
-
-
-
-    max-width: 1000px;
 }
 
 .content-middle{
     flex: 2 2 12em;
-    
 }
 
 .content-sidebar{
@@ -50,11 +45,12 @@ main{
         min-height: 100hv;
     }
     main{
+        display: flex;
+        justify-content: center;
         flex-direction: row;
         min-height: 100%;
+        max-width: 900px;
         flex: 1 1 auto;
-
-        max-width: 700px;
     }
 }
 
