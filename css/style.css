@@ -1,0 +1,272 @@
+*{
+    box-sizing: border-box;
+}
+
+html, body{
+    margin: 0;
+    padding: 0;
+}
+
+/* LAYOUT */
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+main{
+    display:  flex;
+    flex-direction: column;
+}
+
+.content-middle{
+    flex: 2 2 12em;
+    
+}
+
+.content-sidebar{
+    flex:1;
+    order: -1; 
+}
+
+.content-middle, .content-sidebar{
+    margin-left:1em; 
+}
+
+.content-middle{
+    margin-right:1em;
+}
+
+.main-header, .main-footer{
+    flex:0 0 3em;
+}
+
+@media screen and (min-width:600px){
+    body{
+        min-height: 100hv;
+    }
+    main{
+        flex-direction: row;
+        min-height: 100%;
+        flex: 1 1 auto;
+    }
+}
+
+/* COMMON DEACRIPTIONS*/
+body {
+    font-family: Arial, sans-serif;
+    font-size: 12.5px;
+    line-height: 24px;
+    color: #000000;
+    background-color:#e5ebf1;
+
+}
+
+a{
+    color: #2a5885;
+    text-decoration: none;
+    cursor: pointer; 
+}
+
+.btn{
+    display: inline-block;
+    padding: 7px 16px 8px;
+    margin:0;
+    font-family: Roboto,Open Sans,Helvetica Neue,sans-serif;
+    font-size: 12.5px;
+    line-height: 15px;
+    vertical-align: top;
+    text-align: center;
+    text-decoration: none;
+    text-transform: capitalize;
+    background-color: #5e81a8;
+    color: #fff;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    border-radius: 2px;
+    box-sizing: border-box;
+}
+
+.btn-gray{
+    width: 100%;
+    background-color: #e5ebf1;
+    color: #55677d;
+}
+
+.page-block{
+    margin-top: 15px; 
+    background-color: #fff;
+    box-shadow: 0 1px 0 0 #d7d8db;
+}
+
+.module-header{
+    height: 32px;
+    padding: 0 15px;
+    padding-top: 10px; 
+}
+
+.module-header .header-count{
+    color: #939393;
+    padding: 0 6px;
+}
+
+.module-body{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-content: space-around;
+    padding-top: 0px;
+    padding-bottom: 5px;
+}
+
+
+  /* HEADER  */
+.main-header {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: #2a5885;
+}
+
+/* SIDEBAR */
+.content-sidebar{
+    max-width: 40em;
+    display: flex;
+    flex-direction: column;
+}
+
+.page-block.page-photo{
+    padding: 15px;
+}
+
+.page-block.page-photo .owner-photo{
+    display: flex;
+    justify-content: center;
+    
+}
+
+.gift-icon{
+    height: 64px;
+    width: 64px;
+}
+
+.person-cell{
+    padding:0 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.person-icon > img{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}
+
+/* MIDDLE */
+
+/* MIDDLE PAGE-INFO */
+.page-block .page-info{
+    padding: 20px 20px;
+}
+.page-block .info-center{
+    padding-top: 20px;
+}
+
+.info-top{
+    border-bottom: 1px solid #e7e8ec;
+}
+
+.info-center{
+    border-bottom: 1px solid #e7e8ec;
+}
+
+.profile-info-row.more-info{
+    height: 40px;
+}
+
+.profile-name{
+    font-size: 19px;
+    line-height: 25px;
+    font-weight: 400;
+}
+.profile-info-row {
+    display: flex;
+    flex-direction: row;
+}
+.profile-info-row .label{
+    width: 15em;
+    color: #828282;
+}
+
+.counters-module{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.counter-item{
+    padding:15px;
+    display: flex;
+    align-items:  center;
+    flex-direction: column;
+}
+
+.counter-item .counter-number{
+    font-size: 20px;
+}
+
+/* MIDDLE PROFILE-PHOTOS */
+
+.profile-photo-icon{
+    height: 123px;
+    width: 123px;
+    margin: 5px 0; 
+}
+
+.module-body.page-photos-block{
+    padding: 20px 20px;
+}
+
+
+
+
+/* 
+  section{
+      margin-bottom: 20px;
+  }
+
+  main{
+      display: flex;
+  }
+
+  .sidebar, .middle{
+      display: flex;
+      flex-direction: row;
+      margin: 10px;
+      
+  }
+
+  .sidebar-top{
+      width: 100px;
+      margin:10px;
+      background-color: whitesmoke;
+  }
+
+  .sidebar-friend{
+    width: 100px;
+    background-color: whitesmoke;
+}
+
+.top-description{
+    width: 100px;
+    height: 100px;
+    margin:10px;
+    background-color: whitesmoke;
+}
+
+.container-news{
+    width: 100px;
+    background-color: whitesmoke;
+}
+ */
+
+
