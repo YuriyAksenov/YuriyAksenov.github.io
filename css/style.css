@@ -136,6 +136,17 @@ a{
 }
 
 /* SIDEBAR */
+
+.module-friends{
+    display: block;
+}
+
+.person-cell-group{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+}
 .content-sidebar{
     display: flex;
     flex-direction: column;
