@@ -1,6 +1,6 @@
 nav ul a,
-nav .brand-logo {
-  color: rgb(184, 184, 184);
+nav {
+  color: rgb(255, 255, 255);
 }
 
 p {
@@ -8,20 +8,20 @@ p {
 }
 
 .button-collapse {
-  color: #26a69a;
+  color: #0d47a1;
 }
 
 .parallax-container {
   min-height: 380px;
   line-height: 0;
   height: auto;
-  color: rgba(255,255,255,.9);
+  color: rgb(255, 255, 255);
 }
   .parallax-container .section {
     width: 100%;
   }
 
-@media only screen and (max-width : 992px) {
+/* @media only screen and (max-width : 992px) {
   .parallax-container .section {
     position: absolute;
     top: 40%;
@@ -35,7 +35,7 @@ p {
   #index-banner .section {
     top: 0;
   }
-}
+} */
 
 .icon-block {
   padding: 0 15px;
@@ -44,6 +44,3 @@ p {
   font-size: inherit;
 }
 
-footer.page-footer {
-  margin: 0;
-}
