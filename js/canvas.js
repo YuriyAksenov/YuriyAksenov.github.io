@@ -14,8 +14,8 @@ function loadImageUrl() {
 
     xhr.onload = function () {
         console.log(this.responseURL);
-        loadedImageURL = this.responseURL;
-        insertImageIntoCanvas(loadedImageURL);
+        
+        insertImageIntoCanvas(this.responseURL);
     }
     xhr.onerror = function () {
         alert('Ошибка ' + this.status);
