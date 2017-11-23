@@ -19,37 +19,35 @@ xhr.send();
 let RESPONEURL;
 
 function DO(){
-    var XHR = ("onload" in new XMLHttpRequest()) ? XMLHttpRequest : XDomainRequest;
-    
-    var xhr = new XHR();
-    
-    // (2) запрос на другой домен :)
-    xhr.open('GET', 'https://loremflickr.com/cache/images/f512fedb2caf38c32d290f98abfddbac.27.jpg', true);
-    
-    xhr.onload = function () {
-        console.log(this.responseURL);
-        RESPONEURL = this.responseURL;
-        // insertImage("https://loremflickr.com/cache/images/f512fedb2caf38c32d290f98abfddbac.27.jpg");
-    }
-    xhr.onerror = function () {
-        alert('Ошибка ' + this.status);
-    }
-    xhr.send();
+ 
+
+    var canvas = document.getElementById("myCanvas"), 
+    context = canvas.getContext("2d");
+     
+var img = new Image();
+img.src = "https://loremflickr.com/cache/images/f512fedb2caf38c32d290f98abfddbac.27.jpg";
+img.onload = function() {
+     
+    var pattern = context.createPattern(img, "repeat");
+    context.fillStyle = pattern;
+    context.fillRect(10, 10, 150, 150);
+    context.strokeRect(10, 10, 150, 150);
+};
 }
 
-function insertImage(url) {
-    let canvas = document.getElementById("image-canvas"),
-        context = canvas.getContext("2d");
+// function insertImage(url) {
+//     let canvas = document.getElementById("image-canvas"),
+//         context = canvas.getContext("2d");
 
-    let img = new Image();
-    img.src = window.URL.createObjectURL("https://loremflickr.com/cache/images/f512fedb2caf38c32d290f98abfddbac.27.jpg");
-    img.onload = function () {
-        let pattern = context.createPattern(img, "repeat");
-        context.fillStyle = pattern;
-        context.fillRect(10, 10, 150, 150);
-        context.strokeRect(10, 10, 150, 150);
-    }
-}
+//     let img = new Image();
+//     img.src = window.URL.createObjectURL("https://loremflickr.com/cache/images/f512fedb2caf38c32d290f98abfddbac.27.jpg");
+//     img.onload = function () {
+//         let pattern = context.createPattern(img, "repeat");
+//         context.fillStyle = pattern;
+//         context.fillRect(10, 10, 150, 150);
+//         context.strokeRect(10, 10, 150, 150);
+//     }
+// }
 
 
 function getImage() {
