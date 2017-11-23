@@ -18,21 +18,21 @@ xhr.send();
 
 let RESPONEURL;
 
-function DO(){
- 
+function DO() {
 
-    var canvas = document.getElementById("myCanvas"), 
-    context = canvas.getContext("2d");
-     
-var img = new Image();
-img.src = "https://loremflickr.com/cache/images/f512fedb2caf38c32d290f98abfddbac.27.jpg";
-img.onload = function() {
-     
-    var pattern = context.createPattern(img, "repeat");
-    context.fillStyle = pattern;
-    context.fillRect(10, 10, 150, 150);
-    context.strokeRect(10, 10, 150, 150);
-};
+
+    var canvas = document.getElementById("image-canvas"),
+        context = canvas.getContext("2d");
+
+    var img = new Image();
+    img.src = "https://loremflickr.com/cache/images/f512fedb2caf38c32d290f98abfddbac.27.jpg";
+    img.onload = function () {
+
+        var pattern = context.createPattern(img, "repeat");
+        context.fillStyle = pattern;
+        context.fillRect(10, 10, 150, 150);
+        context.strokeRect(10, 10, 150, 150);
+    };
 }
 
 // function insertImage(url) {
@@ -81,8 +81,8 @@ function wrapText(context, text, marginLeft, marginTop, maxWidth, lineHeight) {
     context.fillText(line, marginLeft, marginTop);
 }
 
-let canvas = document.getElementById("image-canvas"), 
-context = canvas.getContext("2d");
+let canvas = document.getElementById("image-canvas"),
+    context = canvas.getContext("2d");
 
 // let img = new Image();
 // img.src = window.URL.createObjectURL("http://placeimg.com/640/480/any");
