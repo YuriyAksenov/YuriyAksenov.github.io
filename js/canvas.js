@@ -28,7 +28,7 @@ function insertImageIntoCanvas(imageUrl) {
     console.log(canvas);
     let context = canvas.getContext("2d");
 
-    let img = new Image();
+    var img = new Image();
     img.src = imageUrl;
     
     img.onload = function () {
