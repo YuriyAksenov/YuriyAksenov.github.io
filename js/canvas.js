@@ -1,69 +1,43 @@
-var XHR = ("onload" in new XMLHttpRequest()) ? XMLHttpRequest : XDomainRequest;
+let loadedImageURL;
 
-var xhr = new XHR();
-
-// (2) запрос на другой домен :)
-xhr.open('GET', 'https://loremflickr.com/320/240', true);
-
-xhr.onload = function () {
-    console.log(this.responseURL);
-    RESPONEURL = this.responseURL;
-    DO();
-    // insertImage("https://loremflickr.com/cache/images/f512fedb2caf38c32d290f98abfddbac.27.jpg");
+function generateNewQuote(){
+    loadImageUrl();
+    insertImageIntoCanvas(loadedImageURL);
 }
-xhr.onerror = function () {
-    alert('Ошибка ' + this.status);
+
+function loadImageUrl(){
+    let XHR = ("onload" in new XMLHttpRequest()) ? XMLHttpRequest : XDomainRequest;
+    let xhr = new XHR();
+    
+    // (2) запрос на другой домен :)
+    xhr.open('GET', 'https://loremflickr.com/640/480', true);
+    
+    xhr.onload = function () {
+        console.log(this.responseURL);
+        loadedImageURL = this.responseURL;
+    }
+    xhr.onerror = function () {
+        alert('Ошибка ' + this.status);
+    }
+    xhr.send();
 }
-xhr.send();
 
-let RESPONEURL;
-
-function DO() {
-
-
+function insertImageIntoCanvas(imageUrl) {
     let canvas = document.getElementById("image-canvas");
     console.log(canvas);
     let context = canvas.getContext("2d");
 
-    console.log(canvas);
-
     let img = new Image();
-    img.src = "https://loremflickr.com/cache/images/f512fedb2caf38c32d290f98abfddbac.27.jpg";
+    img.src = imageUrl;
     img.onload = function () {
-
         let pattern = context.createPattern(img, "repeat");
         context.fillStyle = pattern;
-        context.fillRect(10, 10, 150, 150);
-        context.strokeRect(10, 10, 150, 150);
+        context.fillRect(0, 0, 640, 480);
+        context.strokeRect(0, 0, 640, 480);
     };
 }
 
-// function insertImage(url) {
-//     let canvas = document.getElementById("image-canvas"),
-//         context = canvas.getContext("2d");
 
-//     let img = new Image();
-//     img.src = window.URL.createObjectURL("https://loremflickr.com/cache/images/f512fedb2caf38c32d290f98abfddbac.27.jpg");
-//     img.onload = function () {
-//         let pattern = context.createPattern(img, "repeat");
-//         context.fillStyle = pattern;
-//         context.fillRect(10, 10, 150, 150);
-//         context.strokeRect(10, 10, 150, 150);
-//     }
-// }
-
-
-function getImage() {
-    $.ajax({
-        method: 'GET',
-        url: 'https://placeimg.com/640/480/any',
-        headers: 'Access-Control-Allow-Origin: *',
-        success: function (data) {
-            console.log(data);
-        }
-    });
-    alert("Hello");
-}
 
 function wrapText(context, text, marginLeft, marginTop, maxWidth, lineHeight) {
     let words = text.split(" ");
