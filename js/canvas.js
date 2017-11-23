@@ -31,7 +31,7 @@ function insertImageIntoCanvas(imageUrl) {
     img.src = imageUrl;
     
     img.onload = function () {
-        context.drawImage(image,0,0);
+        context.drawImage(img,0,0);
     };
 }
 
