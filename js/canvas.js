@@ -29,11 +29,9 @@ function insertImageIntoCanvas(imageUrl) {
 
     let img = new Image();
     img.src = imageUrl;
+    
     img.onload = function () {
-        let pattern = context.createPattern(img, "repeat");
-        context.fillStyle = pattern;
-        context.fillRect(0, 0, 640, 480);
-        context.strokeRect(0, 0, 640, 480);
+        context.drawImage(image,0,0);
     };
 }
 
