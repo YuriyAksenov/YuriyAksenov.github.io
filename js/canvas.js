@@ -2,7 +2,7 @@ let loadedImageURL;
 
 function generateQuote() {
     loadImageUrl();
-    insertImageIntoCanvas(loadedImageURL);
+    
 }
 
 function loadImageUrl() {
@@ -15,6 +15,7 @@ function loadImageUrl() {
     xhr.onload = function () {
         console.log(this.responseURL);
         loadedImageURL = this.responseURL;
+        insertImageIntoCanvas(loadedImageURL);
     }
     xhr.onerror = function () {
         alert('Ошибка ' + this.status);
