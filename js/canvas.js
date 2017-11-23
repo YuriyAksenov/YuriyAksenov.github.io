@@ -63,6 +63,7 @@ function downloadQuote() {
     let req = new XMLHttpRequest();
     req.open("POST","quote.jpg",true);
     req.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+    console.log(canvas);
     req.send("img=" + canvas.toDataURL());
     req.onreadystatechange = function(){
         if(req.readyState==4 && req.status==200) {
