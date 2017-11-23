@@ -21,8 +21,11 @@ let RESPONEURL;
 function DO() {
 
 
-    var canvas = document.getElementById("image-canvas"),
+    var canvas = document.getElementById("image-canvas");
+    console.log(canvas);
         context = canvas.getContext("2d");
+
+        console.log(canvas);
 
     var img = new Image();
     img.src = "https://loremflickr.com/cache/images/f512fedb2caf38c32d290f98abfddbac.27.jpg";
