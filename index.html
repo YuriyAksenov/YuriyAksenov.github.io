@@ -10,7 +10,6 @@
   <!--Import Google Icon Font-->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <!--Import materialize.css-->
-  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
   <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
   <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
 
@@ -35,23 +34,24 @@
   <div class="row">
     <div class="col s2"></div>
     <div class="col s3">
-      <button onclick="generateNewQuote()" class="waves-effect waves-light btn btn-small" type="submit" name="action">Generate New Quote
-      </button>
+      <button onclick="generateQuote()" class="waves-effect waves-light btn btn-small" type="submit" name="action">Generate</button>
     </div>
 
     <div class="col s2"></div>
 
     <div class="col s3">
-      <button class=" waves-effect waves-light btn btn-small" type="submit" name="action">Download Quote
-      </button>
+      <button onclick="downloadQuote()" class=" waves-effect waves-light btn btn-small" type="submit" name="action">Download</button>
     </div>
     <div class="col s2"></div>
+  </div>
+
+  <div class="btn" style="width:100px; background-color:red;height:50px;" id="url">
+
   </div>
 
 
   <!--Import jQuery before materialize.js-->
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <script src="js/materialize.js"></script>
   <script src="js/canvas.js"></script>
 </body>
 

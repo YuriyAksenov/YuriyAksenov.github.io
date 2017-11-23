@@ -1,17 +1,17 @@
 let loadedImageURL;
 
-function generateNewQuote(){
+function generateQuote() {
     loadImageUrl();
     insertImageIntoCanvas(loadedImageURL);
 }
 
-function loadImageUrl(){
+function loadImageUrl() {
     let XHR = ("onload" in new XMLHttpRequest()) ? XMLHttpRequest : XDomainRequest;
     let xhr = new XHR();
-    
+
     // (2) запрос на другой домен :)
     xhr.open('GET', 'https://loremflickr.com/640/480', true);
-    
+
     xhr.onload = function () {
         console.log(this.responseURL);
         loadedImageURL = this.responseURL;
@@ -56,6 +56,28 @@ function wrapText(context, text, marginLeft, marginTop, maxWidth, lineHeight) {
         }
     }
     context.fillText(line, marginLeft, marginTop);
+}
+
+function downloadQuote() {
+    let canvas = document.getElementById('image-canvas');
+    let req = new XMLHttpRequest();
+    req.open("POST","quote.jpg",true);
+    req.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+    req.send("img=" + canvas.toDataURL());
+    req.onreadystatechange = function(){
+        if(req.readyState==4 && req.status==200) {
+            var url = document.getElementById('url');
+            url.setAttribute("href", req.responseText);
+            url.innerHTML = "ссылка";
+
+            console.log(req.responseText);
+        }
+    };
+    req.onerror = function(){
+        var url = document.getElementById('url');
+        url.innerHTML = "";
+        alert("Не удалось получить ссылку((")
+    };
 }
 
 
