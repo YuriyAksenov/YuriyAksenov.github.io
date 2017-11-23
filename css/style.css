@@ -1,46 +1,19 @@
-nav ul a,
-nav {
-  color: rgb(255, 255, 255);
+html {
+  font-family: GillSans, Calibri, Trebuchet, sans-serif;
+}
+h1{
+  text-align: center;
+}
+.btn-small{
+  width:200px;
 }
 
-p {
-  line-height: 2rem;
+#canvas-container {
+  width: 100%;
+  text-align:center;
 }
 
-.button-collapse {
-  color: #0d47a1;
+canvas {
+  display: inline;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
-
-.parallax-container {
-  min-height: 380px;
-  line-height: 0;
-  height: auto;
-  color: rgb(255, 255, 255);
-}
-  .parallax-container .section {
-    width: 100%;
-  }
-
-/* @media only screen and (max-width : 992px) {
-  .parallax-container .section {
-    position: absolute;
-    top: 40%;
-  }
-  #index-banner .section {
-    top: 10%;
-  }
-}
-
-@media only screen and (max-width : 600px) {
-  #index-banner .section {
-    top: 0;
-  }
-} */
-
-.icon-block {
-  padding: 0 15px;
-}
-.icon-block .material-icons {
-  font-size: inherit;
-}
-
