@@ -1,8 +1,8 @@
 let loadedImageURL;
 
 function generateQuote() {
-    loadImageUrl();
-    
+    //loadImageUrl();
+    loadQuoteUrl();
 }
 
 function loadImageUrl() {
@@ -11,6 +11,24 @@ function loadImageUrl() {
 
     // (2) запрос на другой домен :)
     xhr.open('GET', 'https://loremflickr.com/640/480', true);
+
+    xhr.onload = function () {
+        console.log(this.responseURL);
+        
+        insertImageIntoCanvas(this.responseURL);
+    }
+    xhr.onerror = function () {
+        alert('Ошибка ' + this.status);
+    }
+    xhr.send();
+}
+
+function loadQuoteUrl() {
+    let XHR = ("onload" in new XMLHttpRequest()) ? XMLHttpRequest : XDomainRequest;
+    let xhr = new XHR();
+
+    // (2) запрос на другой домен :)
+    xhr.open('GET', 'https://api.forismatic.com/api/1.0/?method=getQuote&format=text&jsonp=parseQuote', true);
 
     xhr.onload = function () {
         console.log(this.responseURL);
