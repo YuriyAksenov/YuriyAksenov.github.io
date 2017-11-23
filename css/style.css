@@ -1,19 +1,19 @@
 html {
-  font-family: GillSans, Calibri, Trebuchet, sans-serif;
+  font-family: GillSans, Calibri, Trebuchet, sans-serif !important;
 }
 h1{
-  text-align: center;
+  text-align: center !important;
 }
 .btn-small{
-  width:200px;
+  width:200px !important;
 }
 
 #canvas-container {
-  width: 100%;
-  text-align:center;
+  width: 100% !important;
+  text-align:center !important;
 }
 
 canvas {
-  display: inline;
-  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  display: inline !important;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5) !important; 
 }
