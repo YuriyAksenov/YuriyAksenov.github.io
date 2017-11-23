@@ -7,15 +7,35 @@ xhr.open('GET', 'https://loremflickr.com/320/240', true);
 
 xhr.onload = function () {
     console.log(this.responseURL);
-    insertImage("https://loremflickr.com/cache/images/f512fedb2caf38c32d290f98abfddbac.27.jpg");
+    RESPONEURL = this.responseURL;
+    DO();
+    // insertImage("https://loremflickr.com/cache/images/f512fedb2caf38c32d290f98abfddbac.27.jpg");
 }
-
 xhr.onerror = function () {
     alert('Ошибка ' + this.status);
 }
-
 xhr.send();
 
+let RESPONEURL;
+
+function DO(){
+    var XHR = ("onload" in new XMLHttpRequest()) ? XMLHttpRequest : XDomainRequest;
+    
+    var xhr = new XHR();
+    
+    // (2) запрос на другой домен :)
+    xhr.open('GET', 'https://loremflickr.com/cache/images/f512fedb2caf38c32d290f98abfddbac.27.jpg', true);
+    
+    xhr.onload = function () {
+        console.log(this.responseURL);
+        RESPONEURL = this.responseURL;
+        // insertImage("https://loremflickr.com/cache/images/f512fedb2caf38c32d290f98abfddbac.27.jpg");
+    }
+    xhr.onerror = function () {
+        alert('Ошибка ' + this.status);
+    }
+    xhr.send();
+}
 
 function insertImage(url) {
     let canvas = document.getElementById("image-canvas"),
@@ -63,8 +83,8 @@ function wrapText(context, text, marginLeft, marginTop, maxWidth, lineHeight) {
     context.fillText(line, marginLeft, marginTop);
 }
 
-// let canvas = document.getElementById("image-canvas"), 
-// context = canvas.getContext("2d");
+let canvas = document.getElementById("image-canvas"), 
+context = canvas.getContext("2d");
 
 // let img = new Image();
 // img.src = window.URL.createObjectURL("http://placeimg.com/640/480/any");
