@@ -1,57 +1,65 @@
-let loadedImageURL;
-
 function generateQuote() {
-    //loadImageUrl();
-    loadQuoteUrl();
+    loadImageUrl();
+    let quote = document.getElementById('quote');
+    quote.style.display="none";
 }
 
 function loadImageUrl() {
+    console.log("loadImageUrl")
     let XHR = ("onload" in new XMLHttpRequest()) ? XMLHttpRequest : XDomainRequest;
     let xhr = new XHR();
-
-    // (2) запрос на другой домен :)
     xhr.open('GET', 'https://loremflickr.com/640/480', true);
-
     xhr.onload = function () {
-        console.log(this.responseURL);
-        
+        console.log("loadImageUrl: responseURL "+this.responseURL);
         insertImageIntoCanvas(this.responseURL);
     }
     xhr.onerror = function () {
         alert('Ошибка ' + this.status);
     }
     xhr.send();
+
+    
 }
 
 function loadQuoteUrl() {
-    let XHR = ("onload" in new XMLHttpRequest()) ? XMLHttpRequest : XDomainRequest;
-    let xhr = new XHR();
-
-    // (2) запрос на другой домен :)
-    xhr.open('GET', 'https://api.forismatic.com/api/1.0/?method=getQuote&format=text&jsonp=parseQuote', true);
-
-    xhr.onload = function () {
-        console.log(this.responseURL);
-        
-        insertImageIntoCanvas(this.responseURL);
+    console.log("loadQuoteUrl")
+    let xhr = new XMLHttpRequest()
+    xhr.onreadystatechange = function () {
+        if (this.readyState == 4) {
+            if (this.responseText) {
+                console.log("loadQuoteUrl: responseText "+this.responseText)
+                insertTextIntoCanvas(this.responseText);
+            }
+        }
     }
-    xhr.onerror = function () {
-        alert('Ошибка ' + this.status);
-    }
+    xhr.open('GET', 'http://z9111854.beget.tech/server.php', true);
     xhr.send();
 }
 
 function insertImageIntoCanvas(imageUrl) {
-    let canvas = document.getElementById("image-canvas");
-    console.log(canvas);
-    let context = canvas.getContext("2d");
+    console.log("insertImage: " + imageUrl);
 
-    var img = new Image();
+    let canvas = document.getElementById("image-canvas");
+    let context = canvas.getContext("2d");
+    let img = new Image();
     img.src = imageUrl;
-    
+    img.crossOrigin = 'Anonymous';
     img.onload = function () {
-        context.drawImage(img,0,0);
+        context.drawImage(img, 0, 0);
+        loadQuoteUrl();
     };
+}
+
+function insertTextIntoCanvas(text) {
+    console.log("insertText: " + text);
+    let canvas = document.getElementById("image-canvas");
+    let context = canvas.getContext("2d");
+    let marginLeft = 20;
+    let marginTop = 215;
+    context.font = "23pt Roboto";
+    context.fillStyle = "white";
+
+    wrapText(context, text, marginLeft, marginTop, 600, 35);
 }
 
 
@@ -76,55 +84,27 @@ function wrapText(context, text, marginLeft, marginTop, maxWidth, lineHeight) {
 }
 
 function downloadQuote() {
+    console.log("downloadQuote");
     let canvas = document.getElementById('image-canvas');
-    let req = new XMLHttpRequest();
-    req.open("POST","quote.jpg",true);
-    req.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
-    console.log(canvas);
-    req.send("img=" + canvas.toDataURL());
-    req.onreadystatechange = function(){
-        if(req.readyState==4 && req.status==200) {
-            var url = document.getElementById('url');
-            url.setAttribute("href", req.responseText);
-            url.innerHTML = "ссылка";
+    let data = canvas.toDataURL();
 
-            console.log(req.responseText);
+    let quote = document.getElementById('quote');
+    quote.style.display="block";
+    let req = new XMLHttpRequest();
+    
+    req.onreadystatechange = function () {
+        if (req.readyState == 4 && req.status == 200) {
+            quote.innerHTML = req.responseText;
+            console.log("downloadQuote: "+req.responseText);
         }
     };
-    req.onerror = function(){
-        var url = document.getElementById('url');
-        url.innerHTML = "";
-        alert("Не удалось получить ссылку((")
+    req.onerror = function () {
+        quote.innerHTML = "Ошибка. Ссылка не сделана";
     };
+
+    req.open("POST", "server2.php", true);
+    req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    req.send("img=" + data);
 }
 
-
-
-// let img = new Image();
-// img.src = window.URL.createObjectURL("http://placeimg.com/640/480/any");
-// img.onload = function(){
-//     let pattern = context.createPattern(img,"repeat");
-//     context.fillStyle = pattern;
-//     context.fillRect(10, 10, 150, 150);
-//     context.strokeRect(10, 10, 150, 150);
-// }
-
-// context.strokeRect(50, 40, 100, 100);
-// context.fillRect(200, 40, 100, 100);
-
-// canvas.download = ("chart.png");
-
-
-
-// var maxWidth = 600; //размер поле, где выводится текст
-// var lineHeight = 25;
-
-// var marginLeft = 20;
-// var marginTop = 215;
-// var text = "Сначала мы разбиваем текст на слова по пробелам, а потом обходим эти слова в цикле, " +
-//         "объединяя их по одному в строку. Если при последнем объединении ширина этой строки меньше максимальной, " +
-//         "то продолжаем, а если больше, то выводим строку без последнего слова, а его записываем в новую строку." +
-//         "И так продолжаем, пока не обработаем весь текст.";
-// context.font = "16pt Calibri";
-// context.fillStyle = "#000";
-// wrapText(context, text, marginLeft, marginTop, maxWidth, lineHeight);
+generateQuote();

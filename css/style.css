@@ -25,3 +25,12 @@ html {
     box-shadow: 0 0 10px rgba(0,0,0,0.5); 
   }
   
+  #quote{
+    display: none;
+    height: 20px;
+
+  }
+
+  .quoteUrlConteiner{
+    text-align: center;
+  }
